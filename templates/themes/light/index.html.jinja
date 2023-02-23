@@ -1,33 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mastodon Digest</title>
-    {% include "style.html.jinja" %}
+  <head>
+  	<title>Mastodon Digest</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+
     {% include "scripts.html.jinja" %}
-</head>
-<body>
-    <div id="container">
-        <h1>Mastodon Digest</h1>
-        {% include "render-info.html.jinja" %}
 
-        <section class="posts">
-        {% if posts %}
-            <h2>Here are some popular posts you may have missed:</h2>
-            {% with posts=posts %}
-                {% include "posts.html.jinja" %}
-            {% endwith %}
-        {% endif %}
-        </section>
+  </head>
 
-        <section class="posts">
-        {% if boosts %}
-            <h2>Here are some popular boosts you may have missed:</h2>
-            {% with posts=boosts %}
-                {% include "posts.html.jinja" %}
-            {% endwith %}
-        {% endif %}
-        </section>
-    </div>
-</body>
+  <body>
+		<div class="container d-md-flex align-items-stretch">
+      <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5 pt-5">
+        <h2 class="mb-4">Mastodon Digest</h2>
+        <div id="container">
+          <section class="posts">
+          {% if posts %}
+              <h5>Here are some popular posts you may have missed:</h5>
+              {% with posts=posts %}
+                  {% include "posts.html.jinja" %}
+              {% endwith %}
+          {% endif %}
+          </section>
+  
+          <section class="posts">
+          {% if boosts %}
+              <h2>Here are some popular boosts you may have missed:</h2>
+              {% with posts=boosts %}
+                  {% include "posts.html.jinja" %}
+              {% endwith %}
+          {% endif %}
+          </section>
+      </div>
+  
+      </div>
+
+      <nav id="sidebar">
+				<div class="p-4 pt-5">
+					<h5>Digest info</h5>
+          {% include "render-info.html.jinja" %}
+
+	        <ul class="list-unstyled components mb-5">
+	          <li>
+	            <a href="#posts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Posts</a>
+	            <ul class="collapse list-unstyled" id="postsOrder">
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Chronological</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Highest fav count</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Highest boost count</a></li>
+	            </ul>
+	          </li>
+	          <li>
+	            <a href="#boosts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Boosts</a>
+	            <ul class="collapse list-unstyled" id="boostOrder">
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Chronological</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Highest fav count</a></li>
+                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span> Highest boost count</a></li>
+	            </ul>
+	          </li>
+	        </ul>
+	      </div>
+    	</nav>
+		</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
